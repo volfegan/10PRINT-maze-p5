@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Volfegan Daniel L Lacerda">
+    <title>10PRINT p5</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body onload="">
+    
+    <ul style="list-style: none">
+        <li>
+          <label><input type="radio" name="maze"  value = "diagonal" checked="true" onchange="nameCode(this.value)"> Diagonal Maze with: &nbsp; &#9585; &nbsp; &amp; &nbsp; &#9586;</label>                                    
+        </li>
+        <li>
+          <label><input type="radio" name="maze" value="complex" onchange="nameCode(this.value)">Complex Diagonal Maze with: &nbsp; &#9585; &nbsp; &#9586; &nbsp; &amp; &nbsp; &#9587;</label>
+        </li>
+        <li>
+          <label><input type="radio" name="maze" value="horizontal" onchange="nameCode(this.value)">Horizontal Maze with: &nbsp; &#9620; &nbsp; &amp; &nbsp; &#9621;</label>
+        </li>
+        <li>
+          <label><input type="radio" name="maze" value="chrochet" onchange="nameCode(this.value)">Chrochet pattern with: &nbsp; &#9625; &nbsp; &amp; &nbsp; &#9626;</label>
+        </li>
+    </ul>
+
+    <p>
+        Set the percentage:<br>
+            <label class="modalBtn" style="cursor: auto;">
+                <input type="range" min="-0.5" max="0.5" value="0" step="0.01" id="slash-input" oninput="slashPercentage()">
+            </label>
+            <br>
+            <span id="slashes-percentages">50%:  &#9585; &nbsp; &amp; &nbsp; 50%: &#9586; &nbsp; &nbsp;</span>
+    </p>
+
+    <p id="10PRINTname"><br>10 PRINT CHR$(205.5+RND(1)); : GOTO 10</p>
+
+    <div id="10PRINT"></div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/addons/p5.dom.min.js"></script>
+    <script src="sketch-10PRINT.js"></script>
+</body>
+
+</html>
