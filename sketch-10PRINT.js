@@ -5,7 +5,7 @@ var CHR$1 = String.fromCharCode(9585),
 //show correct 10PRINT code name and characteres used
 function nameCode(mazeType) {
     var tenPRINTname = document.getElementById("10PRINTname");
-    if (mazeType=="diagonal") {
+    if (mazeType=="diagonal" || mazeType=="3Ddiagonal") {
         CHR$1 = String.fromCharCode(9585);
         CHR$2 = String.fromCharCode(9586);
         tenPRINTname.innerHTML = "10 PRINT CHR$(205.5+RND(1)); : GOTO 10"
@@ -57,6 +57,13 @@ maze10PRINT = function(p) {
             if (charType == "diagonal" || charType == "complex") {
                 p.line(this.x, this.y, this.x + p.symbolSize, this.y + p.symbolSize);
                 
+            } else if (charType == "3Ddiagonal") {
+                p.noStroke();
+                p.fill(0, 180, 255, 100);
+                p.triangle(this.x, this.y, this.x + p.symbolSize, this.y + p.symbolSize, this.x, this.y + p.symbolSize);
+                p.stroke(255);
+                p.fill(255);
+                p.line(this.x, this.y, this.x + p.symbolSize, this.y + p.symbolSize);
             } else if (charType == "horizontal") {
                 p.text(String.fromCharCode(9620), this.x, this.y);
                 
@@ -75,6 +82,13 @@ maze10PRINT = function(p) {
             if (charType == "diagonal" || charType == "complex") {
                 p.line(this.x, this.y + p.symbolSize, this.x + p.symbolSize, this.y);
                 
+            } else if (charType == "3Ddiagonal") {
+                p.noStroke();
+                p.fill(0, 180, 255, 100);
+                p.triangle(this.x, this.y + p.symbolSize, this.x + p.symbolSize, this.y, this.x + p.symbolSize, this.y + p.symbolSize);
+                p.stroke(255);
+                p.fill(255);
+                p.line(this.x, this.y + p.symbolSize, this.x + p.symbolSize, this.y);
             } else if (charType == "horizontal") {
                 p.text(String.fromCharCode(9621), this.x, this.y);
                 
@@ -128,6 +142,15 @@ maze10PRINT = function(p) {
                 p.CHR$list[p.CHR$index] = new symbolCHAR1(p.x, p.y, "diagonal");
             } else {
                 p.CHR$list[p.CHR$index] = new symbolCHAR2(p.x, p.y, "diagonal");
+            }
+        } 
+        if (mazeType=="3Ddiagonal") {
+            //3D diagonal maze:  10 PRINT CHR$(205.5+RND(1)); : GOTO 10
+
+            if (p.random() + slashInput < 0.5) {
+                p.CHR$list[p.CHR$index] = new symbolCHAR1(p.x, p.y, "3Ddiagonal");
+            } else {
+                p.CHR$list[p.CHR$index] = new symbolCHAR2(p.x, p.y, "3Ddiagonal");
             }
         }
         if (mazeType=="complex") {
